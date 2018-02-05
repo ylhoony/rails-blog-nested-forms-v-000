@@ -13,7 +13,6 @@ class Post < ActiveRecord::Base
         self.tag = Tag.create(name: tag_attributes[:name], post_id: self)
       end
     end
-
   end
 
 end
