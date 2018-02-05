@@ -6,16 +6,16 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :name, :content
 
-  accepts_nested_attributes_for :tags, reject_if: proc { |attributes| attributes.blank? || attributes['name'].blank? }
+  # accepts_nested_attributes_for :tags, reject_if: proc { |attributes| attributes.blank? || attributes['name'].blank? }
 
-  # def tags_attributes=(tags_attributes)
-  #   # binding.pry
-  #   tags_attributes.values.each do |tag_attributes|
-  #     # binding.pry
-  #     if tag_attributes[:name].present?
-  #       self.tag = Tag.create(name: tag_attributes[:name], post_id: self)
-  #     end
-  #   end
-  # end
+  def tags_attributes=(tags_attributes)
+    # binding.pry
+    tags_attributes.values.each do |tag_attributes|
+      # binding.pry
+      if tag_attributes[:name].present?
+        self.tag = Tag.create(name: tag_attributes[:name], post_id: self)
+      end
+    end
+  end
 
 end
