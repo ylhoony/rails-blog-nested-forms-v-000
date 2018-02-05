@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :name, :content
 
   def tags_attributes=(tags_attributes)
+    binding.pry
     tags_attributes.values.each do |tag_attributes|
       if tag_attributes[:name].present?
         self.tag = Tag.create(name: tag_attributes[:name], post_id: self)
