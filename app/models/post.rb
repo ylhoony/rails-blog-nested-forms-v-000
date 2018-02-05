@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   def tags_attributes=(tags_attributes)
     # binding.pry
     tags_attributes.values.each do |tag_attributes|
-      binding.pry
+      # binding.pry
       if tag_attributes[:name].present?
         self.tag = Tag.create(name: tag_attributes[:name], post_id: self)
       end
